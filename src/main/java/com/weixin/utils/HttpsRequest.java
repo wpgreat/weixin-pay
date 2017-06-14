@@ -20,10 +20,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.conn.ConnectionPoolTimeoutException;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+//import org.apache.http.conn.ssl.SSLContexts;
+import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
@@ -69,7 +70,6 @@ public class HttpsRequest{
             instream.close();
         }
 
-        @SuppressWarnings("deprecation")
 		SSLContext sslcontext = SSLContexts.custom()
                 .loadKeyMaterial(keyStore, Configure.getCertPassword().toCharArray())
                 .build();
